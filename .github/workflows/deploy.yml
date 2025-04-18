@@ -3,7 +3,7 @@ name: Deploy Vue App to GitHub Pages
 on:
   push:
     branches:
-      - main  # 或你实际使用的主分支
+      - main
   workflow_dispatch:
 
 permissions:
@@ -30,9 +30,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./front-end
 
       - name: Build
         run: npm run build
+        working-directory: ./front-end
 
       - name: Upload dist folder
         uses: actions/upload-pages-artifact@v3
